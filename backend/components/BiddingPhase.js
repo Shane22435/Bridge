@@ -1,0 +1,66 @@
+const Player = require('./Player');
+const Deck = require('./Deck');
+const Team = require('./Team');
+const Trick = require('./Trick');
+
+class BiddingPhase {
+    constructor(game) {
+        this.game = game;
+        this.trick = new Trick();
+        this.players = game.players;
+        this.playerCount = game.playerCount; // inheritance?
+        this.currentBid = null;
+        this.currentBidder = 0; // index of current bidder
+        this.highestBidder = null;
+        this.highestBid = null;
+        this.passCount = 0;
+    }
+
+    takeBid() {
+        // take bid from current bidder, not entirely sure on how to implement this
+        // cards have been ranked in numerical order, so we can use that to determine the highest bid
+        // update currentBid and currentBidder
+
+        if (this.currentBid > this.highestBid) {
+            this.highestBid = this.currentBid;
+            this.highestBidder = this.currentBidder;
+        }
+        else{
+            console.log("Invalid bid");
+        }
+
+        if (this.currentBid === 'pass') {
+            this.passCount++;
+        }
+        else {
+            this.passCount = 0;
+            this.highestBid = this.currentBid;
+            this.highestBidder = this.currentBidder;
+        }
+        nextTurn();
+    }
+
+    nextTurn() {
+        if (this.passcount !== this.playerCount - 1) {
+            if (this.currentBidder > this.playerCount - 1) {
+                this.currentBidder = 0;
+            }
+            else {
+                this.currentBidder++;
+            }
+            if (this.currentBidder === this.highestBidder) {
+                this.trick.trumpSuit = this.highestBid;
+                // start trick;
+            }
+            else {
+                this.players[this.currentBidder].takeBid();
+            }
+        } 
+        else {
+            this.trick.trumpSuit = this.currentBid;
+            // start trick;
+        }
+    }
+}
+
+module.exports = BiddingPhase;

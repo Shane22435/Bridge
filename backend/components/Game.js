@@ -1,10 +1,12 @@
 const Deck = require("./Deck");
 const Team = require("./Team");
+const BiddingPhase = require("./BiddingPhase");
 
 class Game {
   constructor(gameId, playerList) {
     this.gameId = gameId;
     this.players = playerList;
+    this.playerCount = playerList.length;
     this.teams = [
       new Team([playerList[0], playerList[2]]),
       new Team([playerList[1], playerList[3]]),
@@ -14,7 +16,8 @@ class Game {
   }
 
   startBidding() {
-    // bidding logic needs to be implemented
+    const biddingPhase = new BiddingPhase(this);
+    biddingPhase.startBiddingPhase();
   }
 
   startPlayPhase() {

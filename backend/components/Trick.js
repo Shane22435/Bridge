@@ -1,6 +1,7 @@
 class Trick {
   constructor() {
     this.cards = [];
+    this.trumpSuit = null;
   }
 
   addCard(player, card) {

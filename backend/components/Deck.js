@@ -3,12 +3,21 @@ const Card = require("./Card");
 class Deck {
   constructor() {
     this.cards = [];
-    const suits = ["hearts", "spades", "diamonds", "clubs"];
-    const ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"];
+    const suits = ["clubs", "diamonds", "hearts", "spades"]; // 1 - 4 represent clubs, diamonds, hearts, spades, in that specific order
+    const ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]; // 11 - 14 represent J, Q, K, A
 
     suits.forEach((suit) => {
       ranks.forEach((rank) => {
-        this.cards.push(new Card(suit, rank));
+        if (suit === "diamonds") {
+          let value = rank * 10;
+        }
+        else if (suit === "hearts") {
+          let value = rank * 100;
+        }
+        else if (suit === "spades") {
+          let value = rank * 1000;
+        }
+        this.cards.push(new Card(suit, rank, value));
       });
     });
   }
