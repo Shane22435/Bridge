@@ -14,6 +14,7 @@ class BiddingPhase {
         this.highestBidder = null;
         this.highestBid = null;
         this.passCount = 0;
+        this.continue = true;
     }
 
     startBiddingPhase() {
@@ -41,7 +42,12 @@ class BiddingPhase {
             this.highestBid = this.currentBid;
             this.highestBidder = this.currentBidder;
         }
-        nextTurn();
+        if (this.continue) {
+            this.nextTurn();
+        }
+        else {
+            new trick = new Trick();
+        }
     }
 
     nextTurn() {
@@ -54,7 +60,7 @@ class BiddingPhase {
             }
             if (this.currentBidder === this.highestBidder) {
                 this.trick.trumpSuit = this.highestBid;
-                // start trick;
+                this.continue = false;
             }
             else {
                 this.players[this.currentBidder].takeBid();
@@ -62,7 +68,7 @@ class BiddingPhase {
         } 
         else {
             this.trick.trumpSuit = this.currentBid;
-            // start trick;
+            this.continue = false;
         }
     }
 }
