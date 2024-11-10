@@ -26,9 +26,6 @@ class Game {
     this.players.forEach((player, i) => {
       player.receiveHand(hands[i]);
     });
-
-    new biddingPhase = new BiddingPhase(this);
-    biddingPhase.startBiddingPhase();
   }
 
   // add any more stuff we need here
