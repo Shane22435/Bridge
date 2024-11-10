@@ -16,6 +16,10 @@ class BiddingPhase {
         this.passCount = 0;
     }
 
+    startBiddingPhase() {
+        this.players[this.currentBidder].takeBid();
+    }
+
     takeBid() {
         // take bid from current bidder, not entirely sure on how to implement this
         // cards have been ranked in numerical order, so we can use that to determine the highest bid
