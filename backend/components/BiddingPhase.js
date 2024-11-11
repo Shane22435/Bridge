@@ -6,7 +6,6 @@ const Trick = require('./Trick');
 class BiddingPhase {
     constructor(game) {
         this.game = game;
-        this.trick = new Trick();
         this.players = game.players;
         this.playerCount = game.playerCount; // inheritance?
         this.currentBid = null;
@@ -46,7 +45,16 @@ class BiddingPhase {
             this.nextTurn();
         }
         else {
-            new trick = new Trick();
+            this.startTrick();
+        }
+    }
+
+    startTrick() {
+        for (let i = 0; i <= 13;) {
+            this.trick = new Trick();
+            this.trick.trumpSuit = this.highestBid;
+            this.currentBidder = this.highestBidder;
+            i++;
         }
     }
 

@@ -2,6 +2,7 @@ class Trick {
   constructor() {
     this.cards = [];
     this.trumpSuit = null;
+    this.highestBidder = null;
   }
 
   addCard(player, card) {
@@ -21,6 +22,12 @@ class Trick {
       ) {
         winningCard = play;
       }
+    }
+
+    playTrick();{
+        // play trick
+        // determine winner
+        // update scores
     }
 
     return winningCard.player;

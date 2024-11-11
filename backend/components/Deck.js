@@ -8,15 +8,7 @@ class Deck {
 
     suits.forEach((suit) => {
       ranks.forEach((rank) => {
-        if (suit === "diamonds") {
-          let value = rank * 10;
-        }
-        else if (suit === "hearts") {
-          let value = rank * 100;
-        }
-        else if (suit === "spades") {
-          let value = rank * 1000; // using orders of magnitude can give us an easy determined order of winning cards
-        }
+        let value = suits.indexOf(suit) + rank;
         this.cards.push(new Card(suit, rank, value));
       });
     });
